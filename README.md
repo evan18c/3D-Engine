@@ -1,10 +1,13 @@
-This is a random OpenGL 3.3 Project written in C++
+# OpenGL 3.3 C++ Project
+This is a random 3D engine written in C++ ustilizing OpenGL on Windows.
 
-Requirements (Installed via msys2):
-OpenGL (opengl32)
-GLEW (glew32)
-GLFW (glfw3)
-GLM
+## Requirements
+- MSYS2
+- g++
+- OpenGL
+- GLEW
+- GLFW
+- GLM
 
-How to build (Uses g++ installed via msys2):
-run r.bat
+## How To Build
+Run ```r.bat``` on the command line.
