@@ -13,6 +13,7 @@
 #include "Engine/model.h"
 #include "Engine/renderer.h"
 #include "Engine/window.h"
+#include "Engine/sprite.h"
 
 namespace Engine {
     extern Window *window;

@@ -16,7 +16,7 @@ int main(void)
     Engine::window->setWindowTitle("Game");
 
     // Create Model
-    Model model = Model("assets/TERRAIN.obj", "assets/CARDBOARD.bmp");
+    Model model = Model("assets/objs/THEY.obj", "assets/bmps/CARDBOARD.bmp");
 
     // Engine
     while (!Engine::window->shouldClose())

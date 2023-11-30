@@ -22,13 +22,13 @@ Renderer::Renderer() {
     
     // Loading vertex shader
     uint32_t vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    const char *vsCode = readFile("shaders/3Dvertex.glsl");
+    const char *vsCode = readFile("shaders/vertex.glsl");
     glShaderSource(vertexShader, 1, &vsCode, NULL);
     glCompileShader(vertexShader);
 
     // Loading fragment shader
     uint32_t fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    const char *fsCode = readFile("shaders/3Dfragment.glsl");
+    const char *fsCode = readFile("shaders/fragment.glsl");
     glShaderSource(fragmentShader, 1, &fsCode, NULL);
     glCompileShader(fragmentShader);
 

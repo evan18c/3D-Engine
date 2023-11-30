@@ -7,8 +7,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-#include "Engine/model.h"
-#include "Engine/camera.h"
+#include "Engine/engine.h"
 
 class Renderer {
     public:

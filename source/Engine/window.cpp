@@ -19,6 +19,7 @@ Window::Window(int w, int h, const char *title) {
     // GLFW and GLEW init
     glfwInit();
     window = glfwCreateWindow(width, height, title, NULL, NULL);
+    glfwSetWindowPos(window, 100, 100);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3); // OpenGL 3.3
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
