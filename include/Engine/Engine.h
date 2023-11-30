@@ -9,11 +9,12 @@
 
 // Engine includes everything
 // When Engine is included, all engine features will be included
+// Note: Include order matters
 #include "Engine/camera.h"
 #include "Engine/model.h"
+#include "Engine/sprite.h"
 #include "Engine/renderer.h"
 #include "Engine/window.h"
-#include "Engine/sprite.h"
 
 namespace Engine {
     extern Window *window;

@@ -13,9 +13,12 @@ class Renderer {
     public:
         Renderer();
         void update();
+        void renderSprite(Sprite sprite);
         void renderModel(Model model);
         uint32_t getShader();
+        uint32_t getShader2D();
 
     private:
         uint32_t shader;
+        uint32_t shader2D;
 };

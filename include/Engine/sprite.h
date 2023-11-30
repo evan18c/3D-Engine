@@ -7,9 +7,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 
-// Enginea
-#include <Engine/Engine.h>
-
+// Sprites support Positioning, Rotation, Texturing.
 class Sprite {
 
     public:
@@ -17,7 +15,7 @@ class Sprite {
         uint32_t getWidth();
         uint32_t getHeight();
         uint32_t getTexture();
-        uint32_t posX, posY;
+        uint32_t posX, posY; // Defines bottom left coords
 
     private:
         uint32_t width, height;

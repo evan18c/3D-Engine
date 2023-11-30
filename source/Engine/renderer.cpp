@@ -14,19 +14,14 @@
 
 // Initialization Method
 Renderer::Renderer() {
-
-    // OpenGL Settings
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
-    glDepthFunc(GL_LESS);
     
-    // Loading vertex shader
+    // Loading 3D vertex shader
     uint32_t vertexShader = glCreateShader(GL_VERTEX_SHADER);
     const char *vsCode = readFile("shaders/vertex.glsl");
     glShaderSource(vertexShader, 1, &vsCode, NULL);
     glCompileShader(vertexShader);
 
-    // Loading fragment shader
+    // Loading 3D fragment shader
     uint32_t fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
     const char *fsCode = readFile("shaders/fragment.glsl");
     glShaderSource(fragmentShader, 1, &fsCode, NULL);
@@ -38,6 +33,24 @@ Renderer::Renderer() {
     glAttachShader(shader, fragmentShader);
     glLinkProgram(shader);
 
+    // Loading 2D vertex shader
+    uint32_t vertexShader2D = glCreateShader(GL_VERTEX_SHADER);
+    const char *vsCode2D = readFile("shaders/vertex2D.glsl");
+    glShaderSource(vertexShader2D, 1, &vsCode2D, NULL);
+    glCompileShader(vertexShader2D);
+
+    // Loading 2D fragment shader
+    uint32_t fragmentShader2D = glCreateShader(GL_FRAGMENT_SHADER);
+    const char *fsCode2D = readFile("shaders/fragment2D.glsl");
+    glShaderSource(fragmentShader2D, 1, &fsCode2D, NULL);
+    glCompileShader(fragmentShader2D);
+
+    // Creating Program
+    shader2D = glCreateProgram();
+    glAttachShader(shader2D, vertexShader2D);
+    glAttachShader(shader2D, fragmentShader2D);
+    glLinkProgram(shader2D);
+
 }
 
 // Updates rendering, clears screen
@@ -46,11 +59,23 @@ void Renderer::update() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
+// Renders a single sprite
+void Renderer::renderSprite(Sprite sprite) {
+    
+}
+
 // Renders a single model
 void Renderer::renderModel(Model model) {
     
     // Getting Camera Reference
     Camera *camera = Engine::camera;
+
+    // Configuring gl settings
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+
+    // Specify Shader
+    glUseProgram(shader);
 
     // Uniform Model, View, Projection matrices
     glm::mat4 Projection = glm::perspective(glm::radians(45.0f), (float)Engine::window->getWidth()/Engine::window->getHeight(), 0.1f, 100.0f);
@@ -74,16 +99,20 @@ void Renderer::renderModel(Model model) {
     glm::vec3 lightVector = glm::vec3(0.5f, 1.0f, 0.5f);
     glUniform3f(lightDirection, lightVector.x, lightVector.y, lightVector.z);
 
-    // Specify Shader Program
-    glUseProgram(shader);
-
     // Bind VAO, Draw it, Unbind it
     glBindVertexArray(model.getVao());
     glDrawArrays(GL_TRIANGLES, 0, model.getTriangles() * 3);
-    glBindVertexArray(0);
 
+    // Unbindings
+    glBindVertexArray(0);
+    glUseProgram(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 
 uint32_t Renderer::getShader() {
     return shader;
+}
+
+uint32_t Renderer::getShader2D() {
+    return shader2D;
 }

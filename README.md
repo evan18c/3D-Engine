@@ -1,5 +1,5 @@
 # OpenGL 3.3 C++ Project
-This is a random 3D engine written in C++ ustilizing OpenGL on Windows.
+This is a random 3D engine written in C++ utilizing OpenGL on Windows.
 
 ## Requirements
 - MSYS2
