@@ -19,6 +19,4 @@ class Renderer {
 
     private:
         uint32_t shader;
-
-        float meme;
 };

@@ -24,7 +24,7 @@ Camera::Camera(float _posX, float _posY, float _posZ, float _lookAtX, float _loo
     pitch = 0.0f;
     sensitivity = 1.0f;
     speed = 5.0f;
-    Engine::window->setCursor(400, 300); // set cursor to center
+    Engine::window->setCursor(Engine::window->getWidth()/2, Engine::window->getHeight()/2); // set cursor to center
 }
 
 // Updates camera's position based on input
@@ -38,9 +38,9 @@ void Camera::update() {
     // ---------- Mouse Movement ---------- //
     double xpos, ypos;
     Engine::window->getCursor(&xpos, &ypos);
-    Engine::window->setCursor(400, 300);
-    yaw   += sensitivity * (400 - xpos) * deltaTime;
-    pitch += sensitivity * (300 - ypos) * deltaTime;
+    Engine::window->setCursor(Engine::window->getWidth()/2, Engine::window->getHeight()/2);
+    yaw   += sensitivity * (Engine::window->getWidth()/2 - xpos) * deltaTime;
+    pitch += sensitivity * (Engine::window->getHeight()/2 - ypos) * deltaTime;
     lookAtX = posX + sin(yaw) * cos(pitch);
     lookAtY = posY + sin(pitch);
     lookAtZ = posZ + cos(yaw) * cos(pitch);

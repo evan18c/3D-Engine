@@ -20,7 +20,7 @@ namespace Engine {
     Camera *camera;
 
     void initialize() {
-        window = new Window(800, 600, "Engine");
+        window = new Window(1280, 720, "Engine");
         renderer = new Renderer();
         camera = new Camera(4.0f, 3.0f, 3.0f, 0.0f, 0.0f, 0.0f);
     }

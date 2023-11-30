@@ -48,15 +48,12 @@ void Renderer::update() {
 
 // Renders a single model
 void Renderer::renderModel(Model model) {
-
-    // meme
-    meme += 0.004f;
-
+    
     // Getting Camera Reference
     Camera *camera = Engine::camera;
 
     // Uniform Model, View, Projection matrices
-    glm::mat4 Projection = glm::perspective(glm::radians(45.0f), (float)800/(float)600, 0.1f, 100.0f);
+    glm::mat4 Projection = glm::perspective(glm::radians(45.0f), (float)Engine::window->getWidth()/Engine::window->getHeight(), 0.1f, 100.0f);
     glm::mat4 View = glm::lookAt(glm::vec3(camera->posX,camera->posY,camera->posZ),glm::vec3(camera->lookAtX,camera->lookAtY,camera->lookAtZ),glm::vec3(0,1,0));
     glm::mat4 Model = glm::translate(glm::mat4(1.0f), glm::vec3(model.posX, model.posY, model.posZ));
     uint32_t modelUniform = glGetUniformLocation(shader, "Model");
@@ -74,7 +71,7 @@ void Renderer::renderModel(Model model) {
 
     // Uniform Diffuse Lighting Direction (lightDirection)
     uint32_t lightDirection = glGetUniformLocation(shader, "lightDirection");
-    glm::vec3 lightVector = glm::vec3(sin(meme), 1.0f, cos(meme+3.14));
+    glm::vec3 lightVector = glm::vec3(0.5f, 1.0f, 0.5f);
     glUniform3f(lightDirection, lightVector.x, lightVector.y, lightVector.z);
 
     // Specify Shader Program

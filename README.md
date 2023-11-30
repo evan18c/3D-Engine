@@ -10,4 +10,4 @@ This is a random 3D engine written in C++ ustilizing OpenGL on Windows.
 - GLM
 
 ## How To Build
-Run ```r.bat``` on the command line.
+Run `r.bat` on the command line.
