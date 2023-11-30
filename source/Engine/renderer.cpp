@@ -61,6 +61,39 @@ void Renderer::update() {
 
 // Renders a single sprite
 void Renderer::renderSprite(Sprite sprite) {
+
+    // Configuring gl settings
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_CULL_FACE);
+
+    // Specify Shader
+    glUseProgram(shader2D);
+
+    // Calculating transform variables
+    float x = (float)sprite.posX / (float)Engine::window->getWidth();
+    float y = (float)sprite.posY / (float)Engine::window->getHeight();
+    float scaleX = (float)sprite.getWidth() / (float)Engine::window->getWidth();
+    float scaleY = (float)sprite.getHeight() / (float)Engine::window->getHeight();
+
+    // Uniform transform matrix
+    glm::mat4 transformation = glm::scale(glm::translate(glm::mat4(1.0f), glm::vec3(x, y * -1, 0)), glm::vec3(scaleX, scaleY, 1));
+    uint32_t transformUniform = glGetUniformLocation(shader2D, "Transformation");
+    glUniformMatrix4fv(transformUniform, 1, false, &transformation[0][0]);
+
+    // Uniform texture
+    uint32_t texture2d = glGetUniformLocation(shader2D, "texture2d");
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, sprite.getTexture());
+    glUniform1i(texture2d, 0);
+
+    // Bind to VAO and draw it
+    glBindVertexArray(sprite.getVao());
+    glDrawArrays(GL_TRIANGLES, 0, 6);
+
+    // Unbindings
+    glBindVertexArray(0);
+    glUseProgram(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
     
 }
 

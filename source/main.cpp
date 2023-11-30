@@ -18,6 +18,11 @@ int main(void)
     // Create Model
     Model model = Model("assets/objs/THEY.obj", "assets/bmps/CARDBOARD.bmp");
 
+    // Create Sprite
+    Sprite sprite = Sprite("assets/sprites/HUD.bmp");
+    sprite.posX = 0;
+    sprite.posY = 0;
+
     // Engine
     while (!Engine::window->shouldClose())
     {
@@ -27,6 +32,7 @@ int main(void)
         // Rendering
         Engine::renderer->update();
         Engine::renderer->renderModel(model);
+        Engine::renderer->renderSprite(sprite);
 
         // Swap screen buffers and poll for events
         Engine::window->update();
