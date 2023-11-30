@@ -55,16 +55,17 @@ Renderer::Renderer() {
 
 // Updates rendering, clears screen
 void Renderer::update() {
-    glClearColor(0.5f, 0.5f, 0.5f, 0.0f);
+    glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 // Renders a single sprite
 void Renderer::renderSprite(Sprite sprite) {
 
-    // Configuring gl settings
-    glDisable(GL_DEPTH_TEST);
-    glDisable(GL_CULL_FACE);
+    // GL settings
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // Specify Shader
     glUseProgram(shader2D);
@@ -94,7 +95,11 @@ void Renderer::renderSprite(Sprite sprite) {
     glBindVertexArray(0);
     glUseProgram(0);
     glBindTexture(GL_TEXTURE_2D, 0);
-    
+
+    // Undo GL Settings
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_BLEND);
+
 }
 
 // Renders a single model
@@ -103,7 +108,7 @@ void Renderer::renderModel(Model model) {
     // Getting Camera Reference
     Camera *camera = Engine::camera;
 
-    // Configuring gl settings
+    // GL Settings
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
 
@@ -140,6 +145,10 @@ void Renderer::renderModel(Model model) {
     glBindVertexArray(0);
     glUseProgram(0);
     glBindTexture(GL_TEXTURE_2D, 0);
+
+    // Undo GL settings
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_CULL_FACE);
 }
 
 uint32_t Renderer::getShader() {

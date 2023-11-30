@@ -1,4 +1,6 @@
 // Includes
+#include <chrono>
+#include <thread>
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
@@ -24,6 +26,7 @@ Window::Window(int w, int h, const char *title) {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwMakeContextCurrent(window);
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GL_TRUE);
     glewExperimental = true;
     glewInit();
@@ -34,8 +37,13 @@ Window::Window(int w, int h, const char *title) {
 
 // This function should be called every frame
 void Window::update() {
+
+    // Window update
     glfwSwapBuffers(window);
     glfwPollEvents();
+
+    // Frame update
+    fpsTimes.push_back(glfwGetTime());
 }
 
 // Check if window should be closed
@@ -78,4 +86,22 @@ void Window::setWindowTitle(const char *title) {
 
 void Window::closeWindow() {
     glfwTerminate();
+}
+
+uint32_t Window::getFPS() {
+    std::vector<float> newFpsTimes;
+    uint32_t fps = 0;
+    for (int i=0; i<fpsTimes.size(); i++) {
+        float current = fpsTimes[i];
+        if (glfwGetTime() - current < 1.0f) {
+            fps++;
+            newFpsTimes.push_back(current);
+        }
+    }
+    return fps;
+}
+
+void Window::sleep(float s) {
+    uint32_t ms = (uint32_t)(s*1000);
+    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }

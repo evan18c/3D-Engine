@@ -23,7 +23,7 @@ Camera::Camera(float _posX, float _posY, float _posZ, float _lookAtX, float _loo
     yaw = 3.14f; // forward facing
     pitch = 0.0f;
     sensitivity = 1.0f;
-    speed = 5.0f;
+    speed = 15.0f;
     Engine::window->setCursor(Engine::window->getWidth()/2, Engine::window->getHeight()/2); // set cursor to center
 }
 

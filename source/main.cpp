@@ -1,3 +1,5 @@
+// Includes
+#include <string>
 #include <stdio.h>
 #include <stdlib.h>
 #include <memory.h>
@@ -16,7 +18,7 @@ int main(void)
     Engine::window->setWindowTitle("Game");
 
     // Create Model
-    Model model = Model("assets/objs/THEY.obj", "assets/bmps/CARDBOARD.bmp");
+    Model model = Model("assets/objs/LEVEL.obj", "assets/bmps/TXT.bmp");
 
     // Create Sprite
     Sprite sprite = Sprite("assets/sprites/HUD.bmp");
@@ -28,6 +30,10 @@ int main(void)
     {
         // Update Camera
         Engine::camera->update();
+
+        // Update window title fps
+        std::string title = "3D Engine. FPS: " + std::to_string(Engine::window->getFPS());
+        Engine::window->setWindowTitle(title.c_str());
 
         // Rendering
         Engine::renderer->update();
