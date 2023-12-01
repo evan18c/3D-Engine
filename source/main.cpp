@@ -22,8 +22,6 @@ int main(void)
 
     // Create Sprite
     Sprite sprite = Sprite("assets/sprites/HUD.bmp");
-    sprite.posX = 0;
-    sprite.posY = 0;
 
     // Engine
     while (!Engine::window->shouldClose())
