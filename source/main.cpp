@@ -30,7 +30,7 @@ int main(void)
         Engine::camera->update();
 
         // Update window title fps
-        std::string title = "3D Engine. FPS: " + std::to_string(Engine::window->getFPS());
+        std::string title = "3D Endgine. FPS: " + std::to_string(Engine::window->getFPS());
         Engine::window->setWindowTitle(title.c_str());
 
         // Rendering

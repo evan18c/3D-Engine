@@ -1,7 +1,8 @@
-# OpenGL 3.3 C++ Project
-This is a random 3D engine written in C++ utilizing OpenGL on Windows.
+# OpenGL 3.3 C++ 3D Game Engine
+This is a random 3D Game Engine written in C++ utilizing OpenGL on Windows.
 
-## Requirements
+## Requirements?
+Use the pacman function on MSYS2 to install the following libraries:
 - MSYS2
 - g++
 - OpenGL
@@ -9,5 +10,13 @@ This is a random 3D engine written in C++ utilizing OpenGL on Windows.
 - GLFW
 - GLM
 
-## How To Build
-Run `r.bat` on the command line.
+## How To Build?
+Run `compile.bat` on the command line. This will create an engine.dll binary in /bin.
+
+## How To Use?
+- Copy the /assets, /include, and /shaders folders into a new directory.
+- Add /include to your includes directory.
+- Build your project and link with Engine.dll
+
+## Why Use My Engine?
+/shrug
