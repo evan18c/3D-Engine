@@ -18,7 +18,7 @@ int main(void)
     Engine::window->setWindowTitle("Game");
 
     // Create Model
-    Model model = Model("assets/objs/LEVEL.obj", "assets/bmps/TXT.bmp");
+    Model model = Model("assets/objs/PLATFORM.obj", "assets/bmps/PLATFORM.bmp");
 
     // Create Sprite
     Sprite sprite = Sprite("assets/sprites/HUD.bmp");

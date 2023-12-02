@@ -139,7 +139,7 @@ void Renderer::renderModel(Model model) {
 
     // Uniform Diffuse Lighting Direction (lightDirection)
     uint32_t lightDirection = glGetUniformLocation(shader, "lightDirection");
-    glm::vec3 lightVector = glm::vec3(0.5f, 1.0f, 0.5f);
+    glm::vec3 lightVector = glm::vec3(0.75f, 1.0f, 0.50f);
     glUniform3f(lightDirection, lightVector.x, lightVector.y, lightVector.z);
 
     // Bind VAO, Draw it, Unbind it
