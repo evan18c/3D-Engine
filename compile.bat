@@ -1,2 +1,2 @@
 @echo off
-g++ source/Engine/Engine.cpp source/Engine/window.cpp source/Engine/renderer.cpp source/Engine/model.cpp source/Engine/utils.cpp source/Engine/camera.cpp source/Engine/sprite.cpp source/Engine/text.cpp source/Engine/physics.cpp -Iinclude -Llibraries -lglew32 -lglfw3 -lopengl32 -shared -o bin/engine.dll
+g++ source/Engine/Engine.cpp source/Engine/window.cpp source/Engine/renderer.cpp source/Engine/model.cpp source/Engine/utils.cpp source/Engine/camera.cpp source/Engine/sprite.cpp source/Engine/text.cpp source/Engine/physics.cpp source/Engine/sound.cpp -Iinclude -Llibraries -lglew32 -lglfw3 -lopengl32 -lSDL2main -lSDL2 -shared -o bin/engine.dll

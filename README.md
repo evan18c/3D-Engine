@@ -3,12 +3,12 @@ This is a random 3D Game Engine written in C++ utilizing OpenGL on Windows.
 
 ## Requirements?
 Use the pacman function on MSYS2 to install the following libraries:
-- MSYS2
-- g++
+- ucrt g++
 - OpenGL
 - GLEW
 - GLFW
 - GLM
+- SDL2
 
 ## How To Build?
 Run `compile.bat` on the command line. This will create an engine.dll binary in /bin.

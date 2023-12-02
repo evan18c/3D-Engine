@@ -23,6 +23,10 @@ int main(void)
     // Create Sprite
     Sprite sprite = Sprite("assets/sprites/HUD.bmp");
 
+    // Create sound and play
+    Sound sfx = Sound("assets/wavs/ding.wav");
+    sfx.play();
+
     // Engine
     while (!Engine::window->shouldClose())
     {

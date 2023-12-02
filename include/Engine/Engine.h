@@ -6,10 +6,13 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <SFML/Audio.hpp>
 
 // Engine includes everything
 // When Engine is included, all engine features will be included
 // Note: Include order matters
+#include "Engine/sound.h"
+#include "Engine/physics.h"
 #include "Engine/camera.h"
 #include "Engine/model.h"
 #include "Engine/sprite.h"
