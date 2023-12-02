@@ -14,6 +14,8 @@ class Camera {
         Camera(float _posX, float _posY, float _posZ, float _lookAtX, float _lookAtY, float _lookAtZ);
         void update();
 
+        bool controlsMouse;
+        bool controlsKeyboard;
         float posX, posY, posZ;
         float lookAtX, lookAtY, lookAtZ;
     

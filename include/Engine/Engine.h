@@ -13,6 +13,7 @@
 #include "Engine/camera.h"
 #include "Engine/model.h"
 #include "Engine/sprite.h"
+#include "Engine/text.h"
 #include "Engine/renderer.h"
 #include "Engine/window.h"
 

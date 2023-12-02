@@ -15,6 +15,7 @@ class Renderer {
         void update();
         void renderSprite(Sprite sprite);
         void renderModel(Model model);
+        void renderText(Text text);
         uint32_t getShader();
         uint32_t getShader2D();
 

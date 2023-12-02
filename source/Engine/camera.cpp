@@ -25,6 +25,8 @@ Camera::Camera(float _posX, float _posY, float _posZ, float _lookAtX, float _loo
     sensitivity = 1.0f;
     speed = 15.0f;
     Engine::window->setCursor(Engine::window->getWidth()/2, Engine::window->getHeight()/2); // set cursor to center
+    controlsMouse = true;
+    controlsKeyboard = true;
 }
 
 // Updates camera's position based on input
@@ -36,27 +38,31 @@ void Camera::update() {
     lastTime = currentTime;
 
     // ---------- Mouse Movement ---------- //
-    double xpos, ypos;
-    Engine::window->getCursor(&xpos, &ypos);
-    Engine::window->setCursor(Engine::window->getWidth()/2, Engine::window->getHeight()/2);
-    yaw   += sensitivity * (Engine::window->getWidth()/2 - xpos) * deltaTime;
-    pitch += sensitivity * (Engine::window->getHeight()/2 - ypos) * deltaTime;
-    lookAtX = posX + sin(yaw) * cos(pitch);
-    lookAtY = posY + sin(pitch);
-    lookAtZ = posZ + cos(yaw) * cos(pitch);
+    if (controlsMouse) {
+        double xpos, ypos;
+        Engine::window->getCursor(&xpos, &ypos);
+        Engine::window->setCursor(Engine::window->getWidth()/2, Engine::window->getHeight()/2);
+        yaw   += sensitivity * (Engine::window->getWidth()/2 - xpos) * deltaTime;
+        pitch += sensitivity * (Engine::window->getHeight()/2 - ypos) * deltaTime;
+        lookAtX = posX + sin(yaw) * cos(pitch);
+        lookAtY = posY + sin(pitch);
+        lookAtZ = posZ + cos(yaw) * cos(pitch);
+    }
 
     // ---------- Keyboard Movement ---------- //
-    glm::vec3 right = glm::vec3(sin(yaw-3.1415926536f/2.0f),0,cos(yaw-3.1415926536f/2.0f));
-    glm::vec3 direction = glm::vec3(sin(yaw)*cos(pitch),sin(pitch),cos(yaw)*cos(pitch));
-    glm::vec3 up = glm::cross(right, direction);
-    glm::vec3 position = glm::vec3(posX, posY, posZ);
-    if (Engine::window->getKey(GLFW_KEY_W)) position += direction * deltaTime * speed;
-    if (Engine::window->getKey(GLFW_KEY_S)) position -= direction * deltaTime * speed;
-    if (Engine::window->getKey(GLFW_KEY_D)) position += right * deltaTime * speed;
-    if (Engine::window->getKey(GLFW_KEY_A)) position -= right * deltaTime * speed;
-    if (Engine::window->getKey(GLFW_KEY_SPACE)) position += glm::vec3(0.0f,1.0,0.0f) * deltaTime * speed;
-    if (Engine::window->getKey(GLFW_KEY_LEFT_SHIFT)) position -= glm::vec3(0.0f,1.0,0.0f) * deltaTime * speed;
-    posX = position.x;
-    posY = position.y;
-    posZ = position.z;
+    if (controlsKeyboard) {
+        glm::vec3 right = glm::vec3(sin(yaw-3.1415926536f/2.0f),0,cos(yaw-3.1415926536f/2.0f));
+        glm::vec3 direction = glm::vec3(sin(yaw)*cos(pitch),sin(pitch),cos(yaw)*cos(pitch));
+        glm::vec3 up = glm::cross(right, direction);
+        glm::vec3 position = glm::vec3(posX, posY, posZ);
+        if (Engine::window->getKey(GLFW_KEY_W)) position += direction * deltaTime * speed;
+        if (Engine::window->getKey(GLFW_KEY_S)) position -= direction * deltaTime * speed;
+        if (Engine::window->getKey(GLFW_KEY_D)) position += right * deltaTime * speed;
+        if (Engine::window->getKey(GLFW_KEY_A)) position -= right * deltaTime * speed;
+        if (Engine::window->getKey(GLFW_KEY_SPACE)) position += glm::vec3(0.0f,1.0,0.0f) * deltaTime * speed;
+        if (Engine::window->getKey(GLFW_KEY_LEFT_SHIFT)) position -= glm::vec3(0.0f,1.0,0.0f) * deltaTime * speed;
+        posX = position.x;
+        posY = position.y;
+        posZ = position.z;
+    }
 }

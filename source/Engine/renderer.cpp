@@ -59,6 +59,11 @@ void Renderer::update() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
+// Renders a single text element
+void Renderer::renderText(Text text) {
+    
+}
+
 // Renders a single sprite
 void Renderer::renderSprite(Sprite sprite) {
 
