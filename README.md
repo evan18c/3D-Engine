@@ -18,5 +18,32 @@ Run `compile.bat` on the command line. This will create an engine.dll binary in 
 - Add /include to your includes directory.
 - Build your project and link with Engine.dll
 
+## Starter Code
+```cpp
+#include "Engine/Engine.h"
+
+int main()
+{
+    Engine::initialize();
+
+    Engine::window->setWindowTitle("Game");
+
+    Model example = Model("example.obj", "example.bmp");
+
+    while (!Engine::window->shouldClose())
+    {
+        Engine::camera->update();
+
+        Engine::renderer->update();
+        Engine::renderer->renderModel(example);
+
+        Engine::window->update();
+    }
+
+    Engine::window->closeWindow();
+    return 0;
+}
+```
+
 ## Why Use My Engine?
 /shrug
