@@ -3,8 +3,7 @@ This is a random 3D Game Engine written in C++ utilizing OpenGL on Windows.
 
 ## Requirements?
 Use the pacman function on MSYS2 to install the following libraries:
-- ucrt g++
-- OpenGL
+- UCRT g++
 - GLEW
 - GLFW
 - GLM
@@ -29,6 +28,9 @@ int main()
     Engine::window->setWindowTitle("Game");
 
     Model example = Model("example.obj", "example.bmp");
+
+    Sound sfx = Sound("example.wav");
+    sfx.play();
 
     while (!Engine::window->shouldClose())
     {
