@@ -13,7 +13,7 @@ Use the pacman function on MSYS2 to install the following libraries:
 Run `compile.bat` on the command line. This will create an engine.dll binary in /bin.
 
 ## How To Test?
-Run `.bat` on the command line to compile and run main.cpp to test the engine.
+Run `r.bat` on the command line to compile and run main.cpp to test the engine.
 
 ## How To Use?
 - Copy the /assets, /include, and /shaders folders into a new directory.
