@@ -16,7 +16,7 @@ Run `compile.bat` on the command line. This will create an engine.dll binary in 
 Run `r.bat` on the command line to compile and run main.cpp to test the engine.
 
 ## How To Use?
-- Copy the /assets, /include, and /shaders folders into a new directory.
+- Copy the /include folder into a new directory.
 - Add /include to your includes directory.
 - Build your project and link with Engine.dll
 

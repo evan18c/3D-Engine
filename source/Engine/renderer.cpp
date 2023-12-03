@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include "Engine/utils.h"
+#include "Engine/shaders.h"
 #include "Engine/Engine.h"
 
 // Header Includes
@@ -17,13 +18,13 @@ Renderer::Renderer() {
     
     // Loading 3D vertex shader
     uint32_t vertexShader = glCreateShader(GL_VERTEX_SHADER);
-    const char *vsCode = readFile("shaders/vertex.glsl");
+    const char *vsCode = Shaders::vertex;
     glShaderSource(vertexShader, 1, &vsCode, NULL);
     glCompileShader(vertexShader);
 
     // Loading 3D fragment shader
     uint32_t fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-    const char *fsCode = readFile("shaders/fragment.glsl");
+    const char *fsCode = Shaders::fragment;
     glShaderSource(fragmentShader, 1, &fsCode, NULL);
     glCompileShader(fragmentShader);
 
@@ -35,13 +36,13 @@ Renderer::Renderer() {
 
     // Loading 2D vertex shader
     uint32_t vertexShader2D = glCreateShader(GL_VERTEX_SHADER);
-    const char *vsCode2D = readFile("shaders/vertex2D.glsl");
+    const char *vsCode2D = Shaders::vertex2D;
     glShaderSource(vertexShader2D, 1, &vsCode2D, NULL);
     glCompileShader(vertexShader2D);
 
     // Loading 2D fragment shader
     uint32_t fragmentShader2D = glCreateShader(GL_FRAGMENT_SHADER);
-    const char *fsCode2D = readFile("shaders/fragment2D.glsl");
+    const char *fsCode2D = Shaders::fragment2D;
     glShaderSource(fragmentShader2D, 1, &fsCode2D, NULL);
     glCompileShader(fragmentShader2D);
 
