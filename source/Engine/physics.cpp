@@ -15,7 +15,10 @@
 namespace Physics {
 
     bool AABB::intersects(AABB other) {
-        return false;
+        if (x2 < other.x1 || x1 > other.x2) return false;
+        if (y2 < other.y1 || y1 > other.y2) return false;
+        if (z2 < other.z1 || z1 > other.z2) return false;
+        return true;
     }
 
 }
