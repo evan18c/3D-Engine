@@ -53,10 +53,7 @@ namespace Shaders {
         // MAIN
         void main()
         {
-            textureColor = texture(textureSampler, UV).rgb;
-            intensity = max(dot(Normal, lightDirection), ambientLight);
-
-            _output = (textureColor + lightColor) * intensity;
+            _output = texture(textureSampler, UV).rgb;
         }
     )";
 

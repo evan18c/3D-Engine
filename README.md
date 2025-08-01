@@ -1,26 +1,28 @@
 # OpenGL 3.3 C++ 3D Game Engine
-This is a random 3D Game Engine written in C++ utilizing OpenGL on Windows.
+This is a basic 3D Game Engine written in C++ utilizing OpenGL on Windows.
 
-## Requirements?
-Use the pacman function on MSYS2 to install the following libraries:
-- UCRT g++
+## Dependencies
+The following dependencies must be installed via MSYS2:
 - GLEW
 - GLFW
+- OpenGL
 - GLM
 - SDL2
+- SFML
 
-## How To Build?
-Run `compile.bat` on the command line. This will create an engine.dll binary in /bin.
+## Building The Engine
+Run `build.bat`. This will generate a static library in /lib.
 
-## How To Test?
-Run `r.bat` on the command line to compile and run main.cpp to test the engine.
+## Testing The Engine
+Run `demo.bat` to test the Engine.
 
-## How To Use?
-- Copy the /include folder into a new directory.
-- Add /include to your includes directory.
-- Build your project and link with Engine.dll
+## Using The Engine
+- Copy all header files from /include into your project directory.
+- Link against Engine and the required dependencies.
+- Build your project and run.
 
-## Starter Code?
+## Example Code
+The following code shows how to render an object and play a sound file.
 ```cpp
 #include "Engine/Engine.h"
 
@@ -50,5 +52,5 @@ int main()
 }
 ```
 
-## Why Use My Engine?
-/shrug
+## Note
+This engine is only a demo and has been discontinued.
